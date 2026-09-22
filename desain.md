@@ -1,21 +1,20 @@
-# Blueprint Arsitektur Desain Konseptual
-## Mini Project 1: Product Information System
+# Dokumentasi Desain (Sistem Manajemen Produk)
 
-Dokumen ini menjabarkan rancangan konseptual arsitektur untuk sistem manajemen data informasi produk.
+## Konsep Utama
+Desain antarmuka difokuskan pada kejelasan data dan kemudahan pembacaan (*readability*). Memanfaatkan tata letak tabel yang bersih agar pengguna dapat langsung mendeteksi ketersediaan barang di gudang.
 
-### 1. Data Layer (`products.php`)
-- **Fungsi**: Bertindak sebagai pusat penyimpanan data statis.
-- **Implementasi**: Menampung *multidimensional array* yang menyimpan data komoditas produk.
-- **Atribut Data yang Disimpan**: ID, Nama, Kategori, Harga, Stok, dan Deskripsi.
+## Skema Warna (Color Palette)
+Desain ini menerapkan indikator warna untuk memberikan peringatan visual kepada pengguna:
+* **Latar Header Tabel:** `#f4f4f4` (Abu-abu terang) untuk memisahkan judul dengan data.
+* **Latar Peringatan Kritis:** `#ffcccc` (Merah muda pucat) sebagai sorotan pada baris produk yang stoknya hampir habis.
+* **Teks Peringatan Kritis:** `#cc0000` (Merah gelap) untuk teks status stok kritis agar kontras dan mudah terbaca.
+* **Area Rangkuman Aset:** `#e9ecef` (Abu-abu kebiruan) untuk kotak *Total Nilai Aset*.
 
-### 2. Processing Layer (`functions.php`)
-- **Fungsi**: Mengelola logika bisnis, pemrosesan, dan kalkulasi sistem.
-- **Implementasi Utama**: 
-  - Fungsi `hitungTotalNilaiStok()`: Bertugas untuk mengalkulasi total nilai aset gudang berdasarkan data stok dan harga.
-  - *Logika Conditional*: Berfungsi untuk memberikan indikator visual (seperti menyaring warna baris tabel) jika stok suatu produk berada dalam status kritis (stok < 3).
+## Tipografi
+* **Font Utama:** `Arial, sans-serif` (profesional dan standar web).
+* **Ukuran Teks:** Teks standar pada tabel, dengan ukuran diperbesar menjadi `1.2em` khusus untuk tampilan Total Aset di bagian bawah.
 
-### 3. Presentation Layer (`index.php`)
-- **Fungsi**: Bertanggung jawab atas antarmuka (User Interface) dan penyajian data kepada pengguna.
-- **Implementasi Utama**: 
-  - Mengintegrasikan seluruh komponen sistem (Data dan Processing layer) menggunakan instruksi `require_once`.
-  - Merender data produk ke dalam bentuk *layout* tabel HTML secara dinamis menggunakan perulangan `foreach`.
+## Struktur Tata Letak (Layout)
+1. **Bagian Atas (Header):** Judul aplikasi rata tengah.
+2. **Bagian Tengah (Data):** Menampilkan tabel yang berisi rincian (ID, Nama Produk, Harga, Stok, Status). 
+3. **Bagian Bawah (Footer):** Modul rangkuman di sisi kanan bawah yang mengalkulasi keseluruhan nilai aset.
